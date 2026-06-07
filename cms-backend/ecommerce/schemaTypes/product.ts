@@ -45,11 +45,22 @@ export default {
       initialValue: 0,
     },
 
-    // 🖼️ Images
+    // 🖼️ Main Image (IMPORTANT)
+    {
+      name: 'image',
+      type: 'image',
+      title: 'Main Image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule: any) => Rule.required(),
+    },
+
+    // 🖼️ Gallery Images (OPTIONAL)
     {
       name: 'images',
       type: 'array',
-      title: 'Images',
+      title: 'Gallery Images',
       of: [
         {
           type: 'image',
@@ -65,7 +76,7 @@ export default {
       name: 'category',
       type: 'reference',
       title: 'Category',
-      to: [{ type: 'category' }],
+      to: [{type: 'category'}],
     },
 
     // ⭐ Featured product
@@ -76,7 +87,7 @@ export default {
       initialValue: false,
     },
 
-    // 🆕 New product flag (ADDED)
+    // 🆕 New product flag
     {
       name: 'isNew',
       type: 'boolean',

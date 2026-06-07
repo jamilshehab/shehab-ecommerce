@@ -1,165 +1,103 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay, Navigation, Pagination } from "swiper/modules";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+
+import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
-import "swiper/css/effect-fade";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
+
+const slides = [
+  {
+    id: 1,
+    title: "Global Shopping Experience",
+    subtitle: "Discover curated products from around the world",
+    image: "/slider/slide-1.jpg",
+    href: "/shop",
+  },
+  {
+    id: 2,
+    title: "Premium Lifestyle Picks",
+    subtitle: "Quality products, simple shopping",
+    image: "/slider/slider-2.jpg",
+    href: "/shop",
+  },
+];
 
 export default function HeroSlider() {
+  const swiperRef = useRef<SwiperType | null>(null);
+
   return (
-    <div className="relative h-screen w-full group overflow-hidden">
-      {/* ARROWS */}
-      <div className="geftora-prev">
-        <FiChevronLeft />
-      </div>
-
-      <div className="geftora-next">
-        <FiChevronRight />
-      </div>
-
+    <section className="relative w-full overflow-hidden bg-black">
       <Swiper
-        modules={[EffectFade, Autoplay, Navigation, Pagination]}
-        effect="fade"
+        modules={[Autoplay, Navigation]}
         loop
-        autoplay={{ delay: 4500, disableOnInteraction: false }}
-        navigation={{
-          nextEl: ".geftora-next",
-          prevEl: ".geftora-prev",
+        speed={900}
+        autoplay={{
+          delay: 4500,
+          disableOnInteraction: false,
         }}
-        pagination={{ clickable: true }}
-        className="h-full w-full"
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        className="h-screen w-full"
       >
-        {/* ===================== */}
-        {/* SLIDE 1 - BRAND INTRO */}
-        {/* ===================== */}
-        <SwiperSlide>
-          <Image
-            src="/slider/1.jpg"
-            alt="Hero Image"
-            fill
-            priority
-            className="object-cover scale-110"
-          />
+        {slides.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            <div className="relative h-screen w-full">
+              {/* Background image */}
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                priority
+                className="object-cover"
+              />
 
-          <div className="absolute inset-0 bg-black/50" />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/60" />
 
-          <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-            <div className="max-w-2xl text-white">
-              {/* LOGO */}
-              <div className="flex justify-center mb-6 animate-fadeUp">
-                <Image
-                  src="/logo/logo.png"
-                  alt="Geftora Logo"
-                  width={320}
-                  height={120}
-                  className="
-                    w-[180px]
-                    sm:w-[240px]
-                    md:w-[300px]
-                    lg:w-[360px]
-                    h-auto
-                    object-contain
-                    brightness-0
-                    invert
-                    drop-shadow-2xl
-                  "
-                />
+              {/* Content */}
+              <div className="absolute inset-0 flex items-center">
+                <div className="mx-auto w-full max-w-6xl px-6 text-white">
+                  <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                    {slide.title}
+                  </h1>
+
+                  <p className="mt-4 max-w-xl text-lg text-white/80">
+                    {slide.subtitle}
+                  </p>
+
+                  <Link
+                    href={slide.href}
+                    className="mt-8 inline-block rounded-full bg-white px-6 py-3 font-medium text-black transition hover:opacity-90"
+                  >
+                    Shop Now
+                  </Link>
+                </div>
               </div>
-
-              <p className="text-lg md:text-2xl text-white/80 animate-fadeUp delay-200">
-                Explore premium gifts designed to make every moment
-                unforgettable.
-              </p>
-
-              <Link
-                href="/shop"
-                className="mt-8 inline-block px-8 py-3 rounded-full bg-white text-black font-medium
-                hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg animate-fadeUp delay-300"
-              >
-                Explore More
-              </Link>
             </div>
-          </div>
-        </SwiperSlide>
-
-        {/* ===================== */}
-        {/* SLIDE 2 */}
-        {/* ===================== */}
-        <SwiperSlide>
-          <Image
-            src="/slider/2.jpg"
-            alt="Hero Image"
-            fill
-            priority
-            className="object-cover scale-110"
-          />
-
-          <div className="absolute inset-0 bg-black/40" />
-
-          <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-            <div className="max-w-2xl text-white">
-              <h1 className="text-4xl font-bold md:text-6xl font-display animate-fadeUp">
-                Make Every Moment Special
-              </h1>
-
-              <p className="mt-5 text-lg md:text-2xl text-white/80 animate-fadeUp delay-200">
-                Premium curated gifts for birthdays, anniversaries, and
-                unforgettable celebrations.
-              </p>
-
-              <Link
-                href="/shop"
-                className="mt-8 inline-block px-8 py-3 rounded-full bg-white text-black font-medium
-                hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg animate-fadeUp delay-300"
-              >
-                Explore More
-              </Link>
-            </div>
-          </div>
-        </SwiperSlide>
-
-        {/* ===================== */}
-        {/* SLIDE 3 */}
-        {/* ===================== */}
-        <SwiperSlide>
-          <Image
-            src="/slider/3.jpg"
-            alt="Hero Image"
-            fill
-            priority
-            className="object-cover scale-110"
-          />
-
-          <div className="absolute inset-0 bg-black/40" />
-
-          <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-            <div className="max-w-2xl text-white">
-              <h1 className="text-4xl font-bold md:text-6xl font-display animate-fadeUp">
-                Designed With Love
-              </h1>
-
-              <p className="mt-5 text-lg md:text-2xl text-white/80 animate-fadeUp delay-200">
-                Unique handcrafted gifts that express emotion and meaning in
-                every detail.
-              </p>
-
-              <Link
-                href="/shop"
-                className="mt-8 inline-block px-8 py-3 rounded-full bg-white text-black font-medium
-                hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg animate-fadeUp delay-300"
-              >
-                Explore More
-              </Link>
-            </div>
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
-    </div>
+
+      {/* Navigation */}
+      <button
+        onClick={() => swiperRef.current?.slidePrev()}
+        className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/50 px-4 py-3 text-white backdrop-blur hover:bg-black/70"
+      >
+        ←
+      </button>
+
+      <button
+        onClick={() => swiperRef.current?.slideNext()}
+        className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/50 px-4 py-3 text-white backdrop-blur hover:bg-black/70"
+      >
+        →
+      </button>
+    </section>
   );
 }

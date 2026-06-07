@@ -12,7 +12,6 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
   // const { cart, openCart } = useCartStore();
-
   // const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
@@ -24,23 +23,25 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <>
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4">
+      {/* HEADER */}
+      <header className="fixed top-4 left-1/2 z-50 w-full -translate-x-1/2 px-4">
         <div className="mx-auto max-w-6xl">
           <div
             className={`relative flex items-center rounded-full border border-black/5 px-5 md:px-7 py-4 transition-all duration-300 ${
               scrolled
-                ? "bg-white/90 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
-                : "bg-white/70 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.05)]"
+                ? "bg-white/90 shadow-[0_10px_40px_rgba(0,0,0,0.08)] backdrop-blur-2xl"
+                : "bg-white/70 shadow-[0_8px_30px_rgba(0,0,0,0.05)] backdrop-blur-xl"
             }`}
           >
-            {/* LEFT - LOGO */}
+            {/* LEFT - LOGO + MOBILE MENU */}
             <div className="flex items-center">
-              {/* MOBILE MENU */}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="md:hidden mr-3 text-black"
+                className="mr-3 text-black md:hidden"
               >
                 {menuOpen ? (
                   <FiX className="text-2xl" />
@@ -49,10 +50,10 @@ const Header = () => {
                 )}
               </button>
 
-              <Link href="/" className="flex items-center shrink-0">
+              <Link href="/" className="flex shrink-0 items-center">
                 <Image
                   src="/logo/logo.png"
-                  alt="  Giftora Logo"
+                  alt="Giftora Logo"
                   width={95}
                   height={40}
                   className="object-contain"
@@ -61,29 +62,21 @@ const Header = () => {
             </div>
 
             {/* CENTER LINKS */}
-            <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-10 text-[15px] font-medium text-neutral-700">
-              <Link href="/" className="hover:opacity-60 transition">
-                Home
-              </Link>
-
-              <Link href="/about" className="hover:opacity-60 transition">
-                About
-              </Link>
-
-              <Link href="/shop" className="hover:opacity-60 transition">
+            <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-10 text-[15px] font-medium text-neutral-700 md:flex">
+              <Link href="/shop" className="transition hover:opacity-60">
                 Shop
               </Link>
 
-              <Link href="/careers" className="hover:opacity-60 transition">
-                Careers
+              <Link href="/featured" className="transition hover:opacity-60">
+                Featured
               </Link>
 
-              <Link href="/franchise" className="hover:opacity-60 transition">
-                Franchise
+              <Link href="/new" className="transition hover:opacity-60">
+                New
               </Link>
 
-              <Link href="/contact" className="hover:opacity-60 transition">
-                Contact
+              <Link href="/gifts" className="transition hover:opacity-60">
+                Gifts
               </Link>
             </nav>
 
@@ -108,35 +101,27 @@ const Header = () => {
 
       {/* MOBILE MENU */}
       <div
-        className={`fixed top-[88px] left-1/2 z-40 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 overflow-hidden rounded-3xl border border-black/5 bg-white/90 backdrop-blur-2xl transition-all duration-300 md:hidden ${
+        className={`fixed left-1/2 top-[88px] z-40 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 rounded-3xl border border-black/5 bg-white/90 backdrop-blur-2xl transition-all duration-300 md:hidden ${
           menuOpen
-            ? "pointer-events-auto opacity-100 translate-y-0"
-            : "pointer-events-none opacity-0 -translate-y-4"
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-4 opacity-0"
         }`}
       >
         <div className="flex flex-col gap-5 px-6 py-6 text-[15px] font-medium text-neutral-700">
-          <Link href="/" onClick={() => setMenuOpen(false)}>
-            Home
-          </Link>
-
-          <Link href="/about" onClick={() => setMenuOpen(false)}>
-            About
-          </Link>
-
-          <Link href="/shop" onClick={() => setMenuOpen(false)}>
+          <Link href="/shop" onClick={closeMenu}>
             Shop
           </Link>
 
-          <Link href="/careers" onClick={() => setMenuOpen(false)}>
-            Careers
+          <Link href="/featured" onClick={closeMenu}>
+            Featured
           </Link>
 
-          <Link href="/franchise" onClick={() => setMenuOpen(false)}>
-            Franchise
+          <Link href="/new" onClick={closeMenu}>
+            New Arrivals
           </Link>
 
-          <Link href="/contact" onClick={() => setMenuOpen(false)}>
-            Contact
+          <Link href="/gifts" onClick={closeMenu}>
+            Gifts
           </Link>
         </div>
       </div>

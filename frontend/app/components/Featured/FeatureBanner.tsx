@@ -26,7 +26,7 @@ export default function FeaturesBanner() {
 
   return (
     <section className="bg-black border-y border-white/10">
-      <div className="container mx-auto px-6 py-10 md:py-12">
+      <div className="container max-w-6xl mx-auto  py-10 md:py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {features.map((feature) => (
             <div
