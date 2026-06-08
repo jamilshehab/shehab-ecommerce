@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -12,12 +12,15 @@ import ProductCard from "./ProductCard";
 import type { Swiper as SwiperType } from "swiper";
 import { Product } from "@/app/types";
 import { SwiperNext, SwiperPrev } from "../CustomArrows/CustomArrows";
+import { AnimatePresence } from "framer-motion";
+import ProductModal from "./Modal/ProductModal";
 
 type Props = {
   products: Product[];
 };
 
 const NewArrivalsClient = ({ products }: Props) => {
+  const [selected, setSelected] = useState<Product | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
@@ -58,11 +61,20 @@ const NewArrivalsClient = ({ products }: Props) => {
           {products.map((product) => (
             <SwiperSlide key={product._id} className="py-4">
               <div className="px-1">
-                <ProductCard product={product} />
+                <ProductCard product={product} onQuickView={setSelected} />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+
+        <AnimatePresence>
+          {selected && (
+            <ProductModal
+              selected={selected}
+              onClose={() => setSelected(null)}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
