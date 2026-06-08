@@ -7,7 +7,6 @@ import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 
- 
 import type { Swiper as SwiperType } from "swiper";
 import { Product } from "@/app/types";
 import { SwiperNext, SwiperPrev } from "../CustomArrows/CustomArrows";
@@ -21,7 +20,7 @@ const FeaturedProductsClient = ({ products }: Props) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="relative py-16">
+    <section className="relative py-20 bg-slate-100">
       {/* HEADER */}
       <div className="container mx-auto max-w-6xl px-4">
         <div className="mb-8 flex items-center justify-between">

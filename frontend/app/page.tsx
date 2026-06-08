@@ -10,10 +10,11 @@ export default function Home() {
     <main className=" ">
       <Slider />
       <FeaturesBanner />
-      <BrandStory />
-      <FeaturedProducts />
       <CategoryMainHome />
+      <FeaturedProducts />
+
       <NewArrivalsSection />
+      <BrandStory />
     </main>
   );
 }

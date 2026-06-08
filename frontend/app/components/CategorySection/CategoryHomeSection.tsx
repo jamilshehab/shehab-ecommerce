@@ -8,7 +8,7 @@ export default function CategoryHomeSection({
   categories: Category[];
 }) {
   return (
-    <section className="w-full px-6 md:px-12 py-16 bg-slate-100">
+    <section className="w-full px-6 md:px-12 py-16 ">
       {/* Title */}
       <div className="mb-10 text-center">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
