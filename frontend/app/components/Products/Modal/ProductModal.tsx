@@ -2,6 +2,7 @@
 
 import { useCartStore } from "@/app/zustand/zustand";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 import { FaShoppingBag } from "react-icons/fa";
 
@@ -97,10 +98,12 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* IMAGE */}
           <motion.div className="relative md:h-full" variants={imagePop}>
-            <img
-              src={selected.main_image?.url}
-              alt={selected.title}
-              className="w-full h-full object-cover"
+            <Image
+              src={selected.imageUrl}
+              alt={selected.name}
+              width={1200}
+              height={1200}
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
             {/* STOCK BADGE */}
@@ -131,7 +134,7 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
 
             {/* TITLE */}
             <h3 className="text-xl sm:text-3xl font-semibold capitalize">
-              {selected.title}
+              {selected.name}
             </h3>
 
             {/* PRICE */}
