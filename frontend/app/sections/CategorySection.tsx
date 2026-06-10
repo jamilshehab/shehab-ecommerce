@@ -2,7 +2,7 @@ import { Category } from "@/app/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CategoryHomeSection({
+export default function CategorySection({
   categories,
 }: {
   categories: Category[];
@@ -59,18 +59,6 @@ export default function CategoryHomeSection({
               <div className="absolute inset-0 border border-white/10 rounded-2xl group-hover:border-white/30 transition" />
             </Link>
           ))}
-        </div>
-        <div className="flex justify-center mt-12">
-          <Link
-            href="/categories"
-            className="group relative px-8 py-3 rounded-full border border-black/20 overflow-hidden"
-          >
-            <span className="relative z-10 text-black group-hover:text-white transition">
-              View All Categories
-            </span>
-
-            <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </Link>
         </div>
       </div>
     </section>

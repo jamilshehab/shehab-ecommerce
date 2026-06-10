@@ -17,14 +17,14 @@ const slides = [
     id: 1,
     title: "Global Shopping Experience",
     subtitle: "Discover curated products from around the world",
-    image: "/slider/slider-3.jpg",
+    image: "/slider/slider-4.jpg",
     href: "/shop",
   },
   {
     id: 2,
     title: "Premium Lifestyle Picks",
     subtitle: "Quality products, simple shopping",
-    image: "/slider/3.jpg",
+    image: "/slider/slider-5.jpg",
     href: "/shop",
   },
 ];
@@ -75,7 +75,7 @@ export default function HeroSlider() {
                     href={slide.href}
                     className="mt-8 inline-flex rounded-full bg-white px-6 py-3 font-medium text-black transition hover:opacity-90"
                   >
-                    Shop Now
+                    Explore Collections
                   </Link>
                 </div>
               </div>

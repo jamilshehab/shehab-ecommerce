@@ -12,12 +12,13 @@ export type Product = {
   slug: string;
   price: number;
 
-  // future-ready fields
   category?: {
     name: string;
-    slug: string;
+    slug: string; // 👈 keep it simple (string)
   };
 
   isFeatured?: boolean;
   isNew?: boolean;
+  inStock?: boolean;
+  _createdAt?: string;
 };

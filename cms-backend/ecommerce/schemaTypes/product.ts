@@ -94,5 +94,13 @@ export default {
       title: 'New Product',
       initialValue: false,
     },
+
+    // Gift Products
+    {
+      name: 'isGift',
+      type: 'boolean',
+      title: 'Gift Product',
+      initialValue: false,
+    },
   ],
 }

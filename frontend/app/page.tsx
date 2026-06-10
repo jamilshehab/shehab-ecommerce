@@ -9,12 +9,13 @@ export default function Home() {
   return (
     <main className=" ">
       <Slider />
-      <FeaturesBanner />
+
+      <BrandStory />
       <CategoryMainHome />
       <FeaturedProducts />
 
       <NewArrivalsSection />
-      <BrandStory />
+      <FeaturesBanner />
     </main>
   );
 }
