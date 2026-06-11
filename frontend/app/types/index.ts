@@ -11,7 +11,7 @@ export type Product = {
   imageUrl: string;
   slug: string;
   price: number;
-
+  stock: number;
   category?: {
     name: string;
     slug: string; // 👈 keep it simple (string)

@@ -14,11 +14,10 @@ export default function ProductDetailsClient({ product }: Props) {
 
   const addToCart = useCartStore((state) => state.addToCart);
 
-  // ✅ STOCK comes from backend (Sanity)
+  // ✅ STOCK from backend ONLY
   const stock = product?.stock ?? 0;
 
   const isOutOfStock = stock === 0;
-  const isLowStock = stock > 0 && stock <= 5;
 
   const increase = () => {
     if (quantity >= stock) return;
@@ -26,7 +25,7 @@ export default function ProductDetailsClient({ product }: Props) {
   };
 
   const decrease = () => {
-    if (quantity > 1) setQuantity((p) => p - 1);
+    setQuantity((p) => Math.max(1, p - 1));
   };
 
   const handleAddToCart = () => {
@@ -54,18 +53,10 @@ export default function ProductDetailsClient({ product }: Props) {
             className="w-full h-full object-cover"
           />
 
-          {/* STOCK BADGE */}
-          {isOutOfStock ? (
+          {/* STOCK BADGE (ONLY REAL STATE) */}
+          {isOutOfStock && (
             <span className="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full">
               Out of Stock
-            </span>
-          ) : isLowStock ? (
-            <span className="absolute top-4 left-4 bg-orange-500 text-white text-xs px-3 py-1 rounded-full">
-              Only {stock} left
-            </span>
-          ) : (
-            <span className="absolute top-4 left-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">
-              In Stock
             </span>
           )}
         </div>

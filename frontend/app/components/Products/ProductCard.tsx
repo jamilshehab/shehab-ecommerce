@@ -14,8 +14,13 @@ type Props = {
 const ProductCard = ({ product, onQuickView }: Props) => {
   const { handleAddToCart } = useAddToCart();
 
+  const isOutOfStock = product.stock === 0;
+
   const onAdd = (e: React.MouseEvent) => {
-    e.preventDefault(); // stop Link navigation
+    e.preventDefault();
+
+    if (isOutOfStock) return;
+
     handleAddToCart(product);
   };
 
@@ -40,6 +45,13 @@ const ProductCard = ({ product, onQuickView }: Props) => {
               </span>
             )}
 
+            {/* STOCK BADGE (ONLY SIMPLE) */}
+            {isOutOfStock && (
+              <span className="absolute right-3 top-3 rounded-full bg-red-500 px-3 py-1 text-[11px] text-white">
+                Sold Out
+              </span>
+            )}
+
             {/* ACTIONS */}
             <div className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 gap-2 opacity-0 transition group-hover:opacity-100 md:flex">
               {/* QUICK VIEW */}
@@ -55,8 +67,9 @@ const ProductCard = ({ product, onQuickView }: Props) => {
 
               {/* ADD TO CART */}
               <button
-                className="rounded-full bg-black p-3 text-white shadow"
+                className="rounded-full bg-black p-3 text-white shadow disabled:opacity-40"
                 onClick={onAdd}
+                disabled={isOutOfStock}
               >
                 <FaShoppingBag size={14} />
               </button>
