@@ -21,8 +21,8 @@ const NewSection = ({ newProducts = [], categoryList = [] }: any) => {
   } = useProductFilters(newProducts);
   return (
     <div>
-      <section className="sticky top-0 z-10 bg-stone-50/80 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 md:flex-row md:items-center justify-end">
+      <section className="sticky top-0 z-10   backdrop-blur">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center justify-end">
           <div className="flex items-center  gap-4">
             <select
               value={sort}

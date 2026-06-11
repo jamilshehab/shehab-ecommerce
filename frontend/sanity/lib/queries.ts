@@ -81,3 +81,33 @@ export const GIFT_PRODUCT_QUERY = groq`
     isGift
   }
 `;
+
+export const PRODUCT_DETAILS_QUERY = groq`
+  *[_type == "product" && slug.current == $slug][0]{
+    _id,
+    name,
+    price,
+    description,
+    "imageUrl": image.asset->url,
+    stock,
+    "slug": slug.current,
+    category->{
+      _id,
+      name,
+      "slug": slug.current
+    }
+  }
+`;
+export const RELATED_PRODUCT_QUERY = groq`
+  *[
+    _type == "product" &&
+    category._ref == $catId &&
+    slug.current != $slug
+  ][0...8]{
+    _id,
+    name,
+    price,
+    "imageUrl": image.asset->url,
+    "slug": slug.current
+  }
+`;

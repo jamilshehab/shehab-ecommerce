@@ -6,13 +6,14 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useCartStore } from "@/app/zustand/zustand";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // const { cart, openCart } = useCartStore();
-  // const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const { cart, openCart } = useCartStore();
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,16 +84,16 @@ const Header = () => {
             {/* RIGHT - CART */}
             <div className="ml-auto flex items-center">
               <button
-                // onClick={openCart}
+                onClick={openCart}
                 className="relative cursor-pointer text-black transition hover:opacity-60"
               >
                 <AiOutlineShoppingCart className="text-[22px]" />
 
-                {/* {totalItems > 0 && (
+                {totalItems > 0 && (
                   <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-dark-brown text-[10px] text-white">
                     {totalItems}
                   </span>
-                )} */}
+                )}
               </button>
             </div>
           </div>

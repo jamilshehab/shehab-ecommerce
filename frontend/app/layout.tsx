@@ -6,6 +6,8 @@ import CategoryNavbar from "./components/CategorySidebar";
 import { CATEGORY_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
+import CartDrawer from "./components/common/CartDrawer";
 
 export const metadata: Metadata = {
   title: "Giftora",
@@ -30,6 +32,8 @@ export default async function RootLayout({
         <Header />
         <CategoryNavbar categories={category} />
         {children}
+        <CartDrawer />
+        <Toaster position="top-right" />
         <Footer />
       </body>
     </html>

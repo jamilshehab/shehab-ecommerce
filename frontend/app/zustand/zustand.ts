@@ -6,7 +6,7 @@ import { persist } from "zustand/middleware";
  * This represents "user intent", NOT inventory rules
  */
 type CartItem = {
-  id: number;
+  id: string;
   title: string;
   price: number;
   image: string;
@@ -25,9 +25,9 @@ type CartStore = {
 
   // Cart actions
   addToCart: (product: CartItem) => void;
-  increaseQuantity: (id: number) => void;
-  decreaseQuantity: (id: number) => void;
-  removeFromCart: (id: number) => void;
+  increaseQuantity: (id: string) => void;
+  decreaseQuantity: (id: string) => void;
+  removeFromCart: (id: string) => void;
 
   // UI actions
   openCart: () => void;

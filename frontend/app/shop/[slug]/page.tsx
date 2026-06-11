@@ -8,12 +8,16 @@ import {
 export default async function ProductSlug({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   const products = await client.fetch(PRODUCTS_BY_CATEGORY_QUERY, {
-    slug: params.slug,
+    slug,
   });
+
   const categoryList = await client.fetch(CATEGORY_QUERY);
+
   return (
     <ProductListingSection productList={products} categoryList={categoryList} />
   );

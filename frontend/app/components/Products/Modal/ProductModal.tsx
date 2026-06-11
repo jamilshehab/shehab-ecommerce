@@ -24,23 +24,19 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
 
   const addToCart = useCartStore((state) => state.addToCart);
 
-  const stock = selected?.stock ?? 0;
-
-  const isOutOfStock = stock === 0;
-  const isLowStock = stock > 0 && stock <= 5;
+  // ONLY backend-driven flag
+  const isOutOfStock = selected?.stock;
 
   /* =========================
      QUANTITY HANDLERS
   ========================= */
 
   const increaseQuantity = () => {
-    if (quantity >= stock) return;
     setQuantity((prev) => prev + 1);
   };
 
   const decreaseQuantity = () => {
-    if (quantity <= 1) return;
-    setQuantity((prev) => prev - 1);
+    setQuantity((prev) => Math.max(1, prev - 1));
   };
 
   /* =========================
@@ -52,9 +48,9 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
 
     addToCart({
       id: selected.id,
-      title: selected.title,
+      title: selected.name,
       price: selected.price,
-      image: selected.main_image?.url || "",
+      image: selected.imageUrl,
       quantity,
     });
 
@@ -62,7 +58,7 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
   };
 
   /* =========================
-     ANIMATIONS (minimal placeholders)
+     ANIMATIONS
   ========================= */
 
   const modalBackdrop = {
@@ -90,41 +86,33 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
       animate="show"
       exit="exit"
     >
-      {/* MODAL CARD */}
+      {/* MODAL */}
       <motion.div
-        className="bg-white/90 backdrop-blur-xl rounded-3xl w-[95%] sm:max-w-4xl max-h-[90vh] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.25)]"
+        className="bg-white/90 backdrop-blur-xl rounded-3xl w-[95%] sm:max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl"
         variants={modalCard}
       >
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* IMAGE */}
-          <motion.div className="relative md:h-full" variants={imagePop}>
+          <motion.div className="relative" variants={imagePop}>
             <Image
               src={selected.imageUrl}
               alt={selected.name}
               width={1200}
               height={1200}
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover w-full h-full"
             />
 
-            {/* STOCK BADGE */}
-            {isOutOfStock ? (
+            {/* ONLY STATUS */}
+            {isOutOfStock && (
               <div className="absolute top-3 left-3 rounded-full bg-red-500 px-3 py-1 text-xs text-white">
                 Out of Stock
-              </div>
-            ) : isLowStock ? (
-              <div className="absolute top-3 left-3 rounded-full bg-orange-500 px-3 py-1 text-xs text-white">
-                Only {stock} left
-              </div>
-            ) : (
-              <div className="absolute top-3 left-3 rounded-full bg-green-500 px-3 py-1 text-xs text-white">
-                In Stock
               </div>
             )}
           </motion.div>
 
           {/* CONTENT */}
-          <div className="p-6 sm:p-8 flex flex-col justify-center relative max-h-[90vh] overflow-y-auto">
-            {/* CLOSE BUTTON */}
+          <div className="p-6 sm:p-8 flex flex-col justify-center relative">
+            {/* CLOSE */}
             <button
               onClick={onClose}
               className="absolute top-3 right-3 h-10 w-10 rounded-full bg-white/80 shadow flex items-center justify-center"
@@ -163,8 +151,7 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
 
                 <button
                   onClick={increaseQuantity}
-                  disabled={quantity >= stock}
-                  className="h-10 w-10 flex items-center justify-center text-xl disabled:opacity-40"
+                  className="h-10 w-10 flex items-center justify-center text-xl"
                 >
                   +
                 </button>
