@@ -14,9 +14,6 @@ import WhatsAppSubscribePopup from "./components/common/PopUp";
 export const metadata: Metadata = {
   title: "Giftora",
   description: "Explore Our Gift Marketplace",
-  icons: {
-    icon: "/logo/favicon.png",
-  },
 };
 const montserrat = Montserrat({
   subsets: ["latin"],
