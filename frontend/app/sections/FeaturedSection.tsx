@@ -60,8 +60,6 @@ const FeaturedSection = ({ featuredProducts = [], categoryList = [] }: any) => {
 
                   <div className="space-y-2 text-sm text-gray-600">
                     {categoryList.map((category: any) => {
-                      console.log("category slug is ", category.slug);
-
                       return (
                         <label key={category._id} className="flex gap-2">
                           <input

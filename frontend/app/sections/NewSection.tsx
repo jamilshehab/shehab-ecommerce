@@ -59,15 +59,17 @@ const NewSection = ({ newProducts = [], categoryList = [] }: any) => {
                   </h3>
 
                   <div className="space-y-2 text-sm text-gray-600">
-                    {categoryList.map((category: any) => (
-                      <label key={category._id} className="flex gap-2">
-                        <input
-                          type="checkbox"
-                          onChange={() => toggleCategory(category.slug.current)}
-                        />
-                        {category.name}
-                      </label>
-                    ))}
+                    {categoryList.map((category: any) => {
+                      return (
+                        <label key={category._id} className="flex gap-2">
+                          <input
+                            type="checkbox"
+                            onChange={() => toggleCategory(category.slug)}
+                          />
+                          {category.name}
+                        </label>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -87,17 +89,6 @@ const NewSection = ({ newProducts = [], categoryList = [] }: any) => {
                   <p className="text-xs text-gray-500 mt-1">
                     Max price: ${maxPrice}
                   </p>
-                </div>
-
-                <div>
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
-                    <input
-                      type="checkbox"
-                      checked={inStockOnly}
-                      onChange={(e) => setInStockOnly(e.target.checked)}
-                    />
-                    In stock only
-                  </label>
                 </div>
               </div>
             </div>

@@ -35,6 +35,21 @@ export const FEATURED_PRODUCTS_QUERY = groq`
   }
 `;
 
+export const NEW_PRODUCTS_QUERY = groq`
+  *[_type == "product"] | order(_createdAt desc)  {
+    _id,
+    name,
+    "imageUrl": image.asset->url,
+    "slug": slug.current,
+    price,
+      "category": category->{
+      name,
+      "slug": slug.current
+    },
+    isNew
+  }
+`;
+
 export const PRODUCTS_BY_CATEGORY_QUERY = groq`
   *[_type == "product" && category->slug.current == $slug]{
     _id,
@@ -58,26 +73,10 @@ export const HOME_NEW_PRODUCTS_QUERY = groq`
     "imageUrl": image.asset->url,
     "slug": slug.current,
     price,
-    
     isNew
   }
 `;
 //get the latest
-
-export const NEW_PRODUCTS_QUERY = groq`
-  *[_type == "product"] | order(_createdAt desc)  {
-    _id,
-    name,
-    "imageUrl": image.asset->url,
-    "slug": slug.current,
-    price,
-     "category": category->{
-      name,
-      "slug": slug.current
-    },
-    isNew
-  }
-`;
 
 export const GIFT_PRODUCT_QUERY = groq`
   *[_type == "product" && isGift == true] 
