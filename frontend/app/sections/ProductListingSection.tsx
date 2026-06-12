@@ -47,20 +47,15 @@ const ProductListingSection = ({
 
       {/* MAIN */}
       <section className="mx-auto max-w-7xl px-6 py-10">
-        <div className="grid gap-10 lg:grid-cols-[240px_1fr]">
-          {/* FILTERS (SOFT PANEL) */}
+        <div>
+          <ProductGrid products={paginatedProducts} />
 
-          {/* PRODUCTS */}
-          <div>
-            <ProductGrid products={paginatedProducts} />
-
-            {/* PAGINATION */}
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              setCurrentPage={setCurrentPage}
-            />
-          </div>
+          {/* PAGINATION */}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </section>
     </div>
