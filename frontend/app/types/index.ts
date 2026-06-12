@@ -12,10 +12,13 @@ export type Product = {
   slug: string;
   price: number;
   stock: number;
-  category?: {
-    name: string;
-    slug: string; // 👈 keep it simple (string)
-  };
+
+  category?:
+    | {
+        name: string;
+        slug: string;
+      }
+    | string; // 🔥 IMPORTANT FIX
 
   isFeatured?: boolean;
   isNew?: boolean;

@@ -19,6 +19,8 @@ export function useProductFilters(products: Product[] = []) {
   };
 
   const filteredProducts = useMemo(() => {
+    console.log("PRODUCT SAMPLE:", products?.[0]);
+    console.log("SELECTED CATEGORIES:", selectedCategories);
     let result = [...(products || [])];
 
     // CATEGORY FILTER (FIXED FOR YOUR DATA)
@@ -27,7 +29,9 @@ export function useProductFilters(products: Product[] = []) {
         const categorySlug =
           typeof p.category === "string" ? p.category : p.category?.slug;
 
-        return categorySlug && selectedCategories.includes(categorySlug);
+        if (!categorySlug) return false;
+
+        return selectedCategories.includes(categorySlug);
       });
     }
 
