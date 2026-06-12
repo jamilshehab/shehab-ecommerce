@@ -7,7 +7,7 @@ import {
 
 import GiftSection from "../sections/GiftSection";
 import Breadcrumb from "../components/common/Breadcrumb";
-
+export const dynamic = "force-dynamic";
 export default async function GiftPage() {
   const categoryList = await client.fetch(CATEGORY_QUERY);
 

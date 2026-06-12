@@ -18,7 +18,7 @@ import {
 type Props = {
   products: Product[];
 };
-
+export const dynamic = "force-dynamic";
 export default function RelatedProducts({ products }: Props) {
   const swiperRef = useRef<SwiperType | null>(null);
 

@@ -5,7 +5,7 @@ import {
   CATEGORY_QUERY,
   PRODUCTS_BY_CATEGORY_QUERY,
 } from "@/sanity/lib/queries";
-
+export const dynamic = "force-dynamic";
 export default async function ProductSlug({
   params,
 }: {

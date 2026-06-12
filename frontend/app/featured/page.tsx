@@ -3,7 +3,7 @@ import { CATEGORY_QUERY, FEATURED_PRODUCTS_QUERY } from "@/sanity/lib/queries";
 
 import FeaturedSection from "../sections/FeaturedSection";
 import Breadcrumb from "../components/common/Breadcrumb";
-
+export const dynamic = "force-dynamic";
 export default async function FeaturedProductsPage() {
   const categoryList = await client.fetch(CATEGORY_QUERY);
 
