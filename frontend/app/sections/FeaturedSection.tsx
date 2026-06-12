@@ -94,14 +94,14 @@ const FeaturedSection = ({ featuredProducts = [], categoryList = [] }: any) => {
                 </div>
 
                 <div>
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
+                  {/* <label className="flex items-center gap-2 text-sm text-gray-600">
                     <input
                       type="checkbox"
                       checked={inStockOnly}
                       onChange={(e) => setInStockOnly(e.target.checked)}
                     />
                     In stock only
-                  </label>
+                  </label> */}
                 </div>
               </div>
             </div>

@@ -90,7 +90,7 @@ const Header = () => {
                 <AiOutlineShoppingCart className="text-[22px]" />
 
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-dark-brown text-[10px] text-white">
+                  <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[10px] text-white">
                     {totalItems}
                   </span>
                 )}

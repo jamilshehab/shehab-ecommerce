@@ -51,12 +51,12 @@ const ProductListingSection = ({
           {/* FILTERS (SOFT PANEL) */}
           <aside className="h-fit space-y-8 lg:sticky lg:top-28">
             <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-black/5">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-700">
+              {/* <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-700">
                 Filters
-              </h2>
+              </h2> */}
 
               <div className="mt-6 space-y-6">
-                <div>
+                {/* <div>
                   <h3 className="mb-3 text-sm font-medium text-gray-700">
                     Categories
                   </h3>
@@ -72,7 +72,7 @@ const ProductListingSection = ({
                       </label>
                     ))}
                   </div>
-                </div>
+                </div> */}
 
                 <div>
                   <h3 className="mb-3 text-sm font-medium text-gray-700">
@@ -93,14 +93,14 @@ const ProductListingSection = ({
                 </div>
 
                 <div>
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
+                  {/* <label className="flex items-center gap-2 text-sm text-gray-600">
                     <input
                       type="checkbox"
                       checked={inStockOnly}
                       onChange={(e) => setInStockOnly(e.target.checked)}
                     />
                     In stock only
-                  </label>
+                  </label> */}
                 </div>
               </div>
             </div>

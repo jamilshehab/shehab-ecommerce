@@ -56,7 +56,7 @@ const ProductCard = ({ product, onQuickView }: Props) => {
             <div className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 gap-2 opacity-0 transition group-hover:opacity-100 md:flex">
               {/* QUICK VIEW */}
               <button
-                className="rounded-full bg-white p-3 shadow"
+                className="rounded-full cursor-pointer bg-white p-3 shadow"
                 onClick={(e) => {
                   e.preventDefault();
                   onQuickView(product);
@@ -67,7 +67,7 @@ const ProductCard = ({ product, onQuickView }: Props) => {
 
               {/* ADD TO CART */}
               <button
-                className="rounded-full bg-black p-3 text-white shadow disabled:opacity-40"
+                className="cursor-pointer rounded-full bg-black p-3 text-white shadow disabled:opacity-40"
                 onClick={onAdd}
                 disabled={isOutOfStock}
               >

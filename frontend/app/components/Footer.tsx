@@ -91,10 +91,12 @@ export default function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-6 text-sm text-neutral-500 md:flex-row">
           <p>© {new Date().getFullYear()} Giftora. All rights reserved.</p>
 
-          <p className="text-center text-xs text-neutral-400 md:text-right">
+          <p className="text-center text-md text-neutral-400 md:text-right">
             Developed by{" "}
             <Link href="mailto:shehabjamil20@gmail.com">
-              <span className="font-medium text-black">Jamil Shehab</span>
+              <span className="font-medium text-md text-black">
+                Jamil Shehab
+              </span>
             </Link>
           </p>
         </div>

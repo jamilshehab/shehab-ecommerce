@@ -78,7 +78,7 @@ export default function ProductDetailsClient({ product }: Props) {
             <div className="flex items-center border rounded-full w-fit overflow-hidden">
               <button
                 onClick={decrease}
-                className="w-10 h-10 flex items-center justify-center text-xl hover:bg-gray-100"
+                className="w-10 h-10 flex cursor-pointer items-center justify-center text-xl hover:bg-gray-100"
               >
                 -
               </button>
@@ -88,7 +88,7 @@ export default function ProductDetailsClient({ product }: Props) {
               <button
                 onClick={increase}
                 disabled={quantity >= stock}
-                className="w-10 h-10 flex items-center justify-center text-xl hover:bg-gray-100 disabled:opacity-40"
+                className="w-10 h-10 cursor-pointer flex items-center justify-center text-xl hover:bg-gray-100 disabled:opacity-40"
               >
                 +
               </button>
@@ -99,7 +99,7 @@ export default function ProductDetailsClient({ product }: Props) {
           <button
             onClick={handleAddToCart}
             disabled={isOutOfStock}
-            className="mt-8 flex items-center justify-center gap-3 bg-black text-white px-6 py-4 rounded-2xl disabled:opacity-40"
+            className="mt-8 cursor-pointer flex items-center justify-center gap-3 bg-black text-white px-6 py-4 rounded-2xl disabled:opacity-40"
           >
             <FaShoppingBag />
             {isOutOfStock ? "Out of Stock" : "Add to Cart"}

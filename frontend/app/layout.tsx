@@ -9,10 +9,14 @@ import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
 import CartDrawer from "./components/common/CartDrawer";
 import FloatingSocial from "./components/common/FloatingSocial";
+import WhatsAppSubscribePopup from "./components/common/PopUp";
 
 export const metadata: Metadata = {
   title: "Giftora",
   description: "Explore Our Gift Marketplace",
+  icons: {
+    icon: "/logo/favicon.png",
+  },
 };
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -32,6 +36,7 @@ export default async function RootLayout({
       <body className="font-sans min-h-full flex flex-col">
         <Header />
         <CategoryNavbar categories={category} />
+        <WhatsAppSubscribePopup />
         {children}
         <CartDrawer />
         <Toaster position="top-right" />

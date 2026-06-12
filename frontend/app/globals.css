@@ -77,54 +77,6 @@ body {
    PREMIUM PAGINATION
 ========================= */
 
-.swiper-pagination {
-  bottom: 28px !important;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-/* base dot */
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.35) !important;
-  opacity: 1;
-  border-radius: 999px;
-  transition: all 0.4s ease;
-  position: relative;
-}
-
-/* active dot (luxury pill style) */
-.swiper-pagination-bullet-active {
-  width: 26px !important;
-  background: white !important;
-}
-
-/* subtle glow animation */
-.swiper-pagination-bullet-active::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
-  animation: pulseDot 1.8s infinite;
-}
-
-@keyframes pulseDot {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(0.8);
-    opacity: 0.6;
-  }
-}
 /* text animation */
 @keyframes fadeUp {
   from {

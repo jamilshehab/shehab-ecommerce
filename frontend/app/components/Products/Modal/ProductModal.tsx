@@ -115,7 +115,7 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
             {/* CLOSE */}
             <button
               onClick={onClose}
-              className="absolute top-3 right-3 h-10 w-10 rounded-full bg-white/80 shadow flex items-center justify-center"
+              className="absolute top-3 cursor-pointer right-3 h-10 w-10 rounded-full bg-white/80 shadow flex items-center justify-center"
             >
               ✕
             </button>
@@ -140,7 +140,7 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
               <div className="flex items-center border rounded-full w-fit overflow-hidden">
                 <button
                   onClick={decreaseQuantity}
-                  className="h-10 w-10 flex items-center justify-center text-xl"
+                  className="h-10 w-10 cursor-pointer flex items-center justify-center text-xl"
                 >
                   -
                 </button>
@@ -151,7 +151,7 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
 
                 <button
                   onClick={increaseQuantity}
-                  className="h-10 w-10 flex items-center justify-center text-xl"
+                  className="h-10 cursor-pointer w-10 flex items-center justify-center text-xl"
                 >
                   +
                 </button>
@@ -163,7 +163,7 @@ const ProductModal = ({ selected, onClose }: ProductModalProps) => {
               <button
                 disabled={isOutOfStock}
                 onClick={handleAddToCart}
-                className="flex items-center justify-center gap-3 rounded-2xl bg-black px-8 py-4 text-white disabled:opacity-40"
+                className="flex cursor-pointer items-center justify-center gap-3 rounded-2xl bg-black px-8 py-4 text-white disabled:opacity-40"
               >
                 <FaShoppingBag />
                 {isOutOfStock ? "Out Of Stock" : `Add ${quantity} To Cart`}

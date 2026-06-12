@@ -40,33 +40,35 @@ const FeaturedProductsClient = ({ products }: Props) => {
 
       {/* SWIPER */}
       <div className="container mx-auto max-w-6xl px-4 py-2">
-        <Swiper
-          modules={[Autoplay]}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          loop
-          speed={800}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: true,
-            pauseOnMouseEnter: true,
-          }}
-          spaceBetween={16}
-          slidesPerView={1.2}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
-          }}
-          className="!overflow-visible"
-        >
-          {products.map((product) => (
-            <SwiperSlide key={product._id} className="py-4">
-              <div className="px-1">
-                <ProductCard product={product} onQuickView={setSelected} />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div className="overflow-hidden">
+          <Swiper
+            modules={[Autoplay]}
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            loop
+            speed={800}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: true,
+              pauseOnMouseEnter: true,
+            }}
+            spaceBetween={16}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 1 },
+              1024: { slidesPerView: 4 },
+            }}
+            className="!overflow-visible"
+          >
+            {products.map((product) => (
+              <SwiperSlide key={product._id} className="py-4">
+                <div className="px-1">
+                  <ProductCard product={product} onQuickView={setSelected} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
         <AnimatePresence>
           {selected && (
             <ProductModal

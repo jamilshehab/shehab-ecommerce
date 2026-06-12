@@ -7,7 +7,7 @@ type ArrowProps = {
 export const SwiperPrev = ({ onClick }: ArrowProps) => (
   <button
     onClick={onClick}
-    className="rounded-full bg-white p-3 shadow-md transition hover:scale-105"
+    className="rounded-full cursor-pointer bg-white p-3 shadow-md transition hover:scale-105"
   >
     <FaChevronLeft />
   </button>
@@ -16,7 +16,7 @@ export const SwiperPrev = ({ onClick }: ArrowProps) => (
 export const SwiperNext = ({ onClick }: ArrowProps) => (
   <button
     onClick={onClick}
-    className="rounded-full bg-white p-3 shadow-md transition hover:scale-105"
+    className="rounded-full cursor-pointer bg-white p-3 shadow-md transition hover:scale-105"
   >
     <FaChevronRight />
   </button>
