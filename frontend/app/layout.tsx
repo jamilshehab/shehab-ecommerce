@@ -8,6 +8,7 @@ import { client } from "@/sanity/lib/client";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
 import CartDrawer from "./components/common/CartDrawer";
+import FloatingSocial from "./components/common/FloatingSocial";
 
 export const metadata: Metadata = {
   title: "Giftora",
@@ -34,6 +35,7 @@ export default async function RootLayout({
         {children}
         <CartDrawer />
         <Toaster position="top-right" />
+        <FloatingSocial />
         <Footer />
       </body>
     </html>

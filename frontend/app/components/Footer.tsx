@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black/10 bg-white">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 py-16 md:grid-cols-4">
+    <footer className="border-t border-black/10 bg-slate-100">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 py-16 md:grid-cols-3">
         {/* BRAND */}
         <div>
           <h3 className="text-lg font-bold">Giftora</h3>
@@ -18,8 +19,9 @@ export default function Footer() {
         {/* SHOP */}
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-wide text-neutral-800">
-            Shop
+            Quick Links
           </h4>
+
           <ul className="mt-4 space-y-3 text-sm text-neutral-600">
             <li>
               <Link href="/shop" className="hover:text-black">
@@ -41,60 +43,46 @@ export default function Footer() {
                 Gifts
               </Link>
             </li>
-          </ul>
-        </div>
-
-        {/* COMPANY */}
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-neutral-800">
-            Company
-          </h4>
-          <ul className="mt-4 space-y-3 text-sm text-neutral-600">
             <li>
               <Link href="/about" className="hover:text-black">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-black">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link href="/shipping" className="hover:text-black">
-                Shipping Info
-              </Link>
-            </li>
-            <li>
-              <Link href="/returns" className="hover:text-black">
-                Returns
+                About
               </Link>
             </li>
           </ul>
         </div>
 
-        {/* NEWSLETTER */}
+        {/* SOCIAL MEDIA (3rd COLUMN) */}
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-wide text-neutral-800">
-            Stay Updated
+            Follow Us
           </h4>
+
           <p className="mt-4 text-sm text-neutral-600">
-            Get updates on new products and special offers.
+            Stay connected for new gifts and updates.
           </p>
 
-          <form className="mt-4 flex">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="w-full rounded-l-full border border-black/10 px-4 py-2 text-sm outline-none"
-            />
-            <button
-              type="submit"
-              className="rounded-r-full bg-black px-5 text-sm text-white hover:opacity-90"
+          <div className="mt-5 flex gap-4">
+            <Link
+              href="https://instagram.com/yourusername"
+              target="_blank"
+              className="flex h-10 w-10 items-center justify-center rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%)",
+              }}
             >
-              Join
-            </button>
-          </form>
+              <FaInstagram className="text-white text-lg" />
+            </Link>
+
+            <Link
+              href="https://wa.me/961XXXXXXXX"
+              target="_blank"
+              className="flex h-10 w-10 items-center justify-center rounded-full"
+              style={{ backgroundColor: "#25D366" }}
+            >
+              <FaWhatsapp className="text-white text-lg" />
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -103,14 +91,12 @@ export default function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-6 text-sm text-neutral-500 md:flex-row">
           <p>© {new Date().getFullYear()} Giftora. All rights reserved.</p>
 
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-black">
-              Privacy Policy
+          <p className="text-center text-xs text-neutral-400 md:text-right">
+            Developed by{" "}
+            <Link href="mailto:shehabjamil20@gmail.com">
+              <span className="font-medium text-black">Jamil Shehab</span>
             </Link>
-            <Link href="/terms" className="hover:text-black">
-              Terms
-            </Link>
-          </div>
+          </p>
         </div>
       </div>
     </footer>

@@ -1,3 +1,4 @@
+import Breadcrumb from "@/app/components/common/Breadcrumb";
 import ProductListingSection from "@/app/sections/ProductListingSection";
 import { client } from "@/sanity/lib/client";
 import {
@@ -19,6 +20,18 @@ export default async function ProductSlug({
   const categoryList = await client.fetch(CATEGORY_QUERY);
 
   return (
-    <ProductListingSection productList={products} categoryList={categoryList} />
+    <main>
+      <Breadcrumb
+        items={[
+          {
+            label: slug,
+          },
+        ]}
+      />
+      <ProductListingSection
+        productList={products}
+        categoryList={categoryList}
+      />
+    </main>
   );
 }

@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useCartStore } from "@/app/zustand/zustand";
+import toast from "react-hot-toast";
 
 type CheckoutData = {
-  name: string;
+  fullName: string;
   phone: string;
   address: string;
 };
@@ -17,7 +18,7 @@ export function useCheckout() {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const placeOrder = async (data: CheckoutData) => {
+  const placeOrder = async (data: CheckoutData, resetForm?: () => void) => {
     try {
       setLoading(true);
       setError(null);
@@ -26,13 +27,13 @@ export function useCheckout() {
 
       // ✅ CLEAN ORDER PAYLOAD
       const orderPayload = {
-        name: data.name,
+        fullName: data.fullName,
         phone: data.phone,
         address: data.address,
         items: cart.map((item) => ({
-          productId: item.id,
+          id: item.id,
           title: item.title,
-          image: item.image, // IMPORTANT: must be URL string
+          image: item.image,
           price: item.price,
           quantity: item.quantity,
         })),
@@ -48,13 +49,19 @@ export function useCheckout() {
         body: JSON.stringify(orderPayload),
       });
 
-      if (!res.ok) throw new Error("Failed to create order");
+      if (!res.ok) {
+        toast.error("Failed to create order");
+        throw new Error("Order failed");
+      }
+
+      // ✅ SUCCESS
+      toast.success("Order placed successfully 🎉");
 
       // 2️⃣ WhatsApp message
       const message = `
 🛒 New Order
 
-👤 Name: ${data.name}
+👤 Name: ${data.fullName}
 📱 Phone: ${data.phone}
 📍 Address: ${data.address}
 
@@ -79,6 +86,7 @@ ${cart
 
       // 3️⃣ Clear cart
       clearCart();
+      resetForm?.(); // reset inputs
     } catch (err: any) {
       setError(err.message);
     } finally {

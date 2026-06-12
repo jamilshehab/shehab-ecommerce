@@ -60,16 +60,12 @@ export default function CategoryHomeSection({
             </Link>
           ))}
         </div>
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-4">
           <Link
-            href="/categories"
-            className="group relative px-8 py-3 rounded-full border border-black/20 overflow-hidden"
+            href="/shop"
+            className="mt-8 inline-flex rounded-full bg-black px-6 py-3 text-white transition hover:opacity-90"
           >
-            <span className="relative z-10 text-black group-hover:text-white transition">
-              View All Categories
-            </span>
-
-            <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            View All
           </Link>
         </div>
       </div>

@@ -9,9 +9,9 @@ export function useProductFilters(products: Product[] = []) {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  //load 12 products per page
+
   const itemsPerPage = 12;
-  // toggle category
+
   const toggleCategory = (slug: string) => {
     setSelectedCategories((prev) =>
       prev.includes(slug) ? prev.filter((c) => c !== slug) : [...prev, slug],
@@ -19,17 +19,17 @@ export function useProductFilters(products: Product[] = []) {
   };
 
   const filteredProducts = useMemo(() => {
-    // ✅ prevent crash if products is undefined
     let result = [...(products || [])];
 
-    // CATEGORY FILTER
+    // CATEGORY FILTER (FIXED FOR YOUR DATA)
     if (selectedCategories.length > 0) {
-      result = result.filter(
-        (p) => p.category?.slug && selectedCategories.includes(p.category.slug),
-      );
-    }
+      result = result.filter((p) => {
+        const categorySlug =
+          typeof p.category === "string" ? p.category : p.category?.slug;
 
-    //add paginated products
+        return categorySlug && selectedCategories.includes(categorySlug);
+      });
+    }
 
     // PRICE FILTER
     result = result.filter((p) => p.price <= maxPrice);
@@ -39,7 +39,7 @@ export function useProductFilters(products: Product[] = []) {
       result = result.filter((p) => p.inStock === true);
     }
 
-    // SORT (IMPORTANT: avoid mutating original array)
+    // SORT
     if (sort === "price-low") {
       result = [...result].sort((a, b) => a.price - b.price);
     }
@@ -67,6 +67,7 @@ export function useProductFilters(products: Product[] = []) {
   }, [filteredProducts, currentPage]);
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
   return {
     filteredProducts,
     selectedCategories,

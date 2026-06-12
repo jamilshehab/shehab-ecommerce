@@ -2,29 +2,15 @@ import { client } from "@/sanity/lib/client";
 import { CATEGORY_QUERY, FEATURED_PRODUCTS_QUERY } from "@/sanity/lib/queries";
 
 import FeaturedSection from "../sections/FeaturedSection";
+import Breadcrumb from "../components/common/Breadcrumb";
 
 export default async function FeaturedProductsPage() {
   const categoryList = await client.fetch(CATEGORY_QUERY);
 
   const featuredProducts = await client.fetch(FEATURED_PRODUCTS_QUERY);
   return (
-    <main className="min-h-screen bg-stone-50 text-gray-900">
-      {/* HERO */}
-      {/* <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
-            Collection
-          </p>
-
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
-            Featured Products
-          </h1>
-
-          <p className="mt-4 max-w-xl text-gray-600">
-            Hand-selected Lebanese crafts made with care, culture, and detail.
-          </p>
-        </div>
-      </section> */}
+    <main className="">
+      <Breadcrumb items={[{ label: "Featured Products" }]} />
       <FeaturedSection
         featuredProducts={featuredProducts}
         categoryList={categoryList}

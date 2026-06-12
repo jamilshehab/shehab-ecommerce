@@ -4,6 +4,8 @@ import { useCartStore } from "@/app/zustand/zustand";
 import Link from "next/link";
 import Image from "next/image";
 import { IoClose } from "react-icons/io5";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 export default function CartDrawer() {
   const {
     cart,
@@ -15,7 +17,10 @@ export default function CartDrawer() {
   } = useCartStore();
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
+  const pathname = usePathname();
+  useEffect(() => {
+    closeCart();
+  }, [pathname, closeCart]);
   return (
     <>
       {/* BACKDROP */}
@@ -39,19 +44,19 @@ export default function CartDrawer() {
         `}
       >
         {/* HEADER */}
-        <div className="flex items-center justify-between px-5 py-4 border-b">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-300">
           <h2 className="text-lg font-semibold">Your Cart</h2>
 
           <button
             onClick={closeCart}
-            className="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+            className="h-9 w-9 flex border-slate-300 items-center justify-center rounded-full hover:bg-gray-100 transition"
           >
             <IoClose size={18} />
           </button>
         </div>
 
         {/* CART ITEMS */}
-        <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+        <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4 ">
           {cart.length === 0 ? (
             <p className="text-center text-gray-500 mt-10">
               Your cart is empty 🛒
@@ -60,7 +65,7 @@ export default function CartDrawer() {
             cart.map((item) => (
               <div
                 key={`${item.id}-${item.title}`}
-                className="flex gap-4 items-center border-b pb-4"
+                className="flex gap-4 items-center border-b border-slate-300 pb-4"
               >
                 {/* IMAGE */}
                 <Image
@@ -80,19 +85,21 @@ export default function CartDrawer() {
                   <p className="text-sm text-gray-500">${item.price}</p>
 
                   {/* QUANTITY */}
-                  <div className="flex items-center gap-2 mt-2">
+                  <div className="flex items-center border-slate-300 gap-2 mt-3">
                     <button
                       onClick={() => decreaseQuantity(item.id)}
-                      className="h-8 w-8 rounded-md border hover:bg-gray-100 transition"
+                      className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-100 transition"
                     >
                       -
                     </button>
 
-                    <span className="text-sm font-medium">{item.quantity}</span>
+                    <span className="w-6 text-center text-sm font-medium">
+                      {item.quantity}
+                    </span>
 
                     <button
                       onClick={() => increaseQuantity(item.id)}
-                      className="h-8 w-8 rounded-md border hover:bg-gray-100 transition"
+                      className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-100 transition"
                     >
                       +
                     </button>
@@ -112,7 +119,7 @@ export default function CartDrawer() {
         </div>
 
         {/* FOOTER */}
-        <div className="border-t p-5 bg-white">
+        <div className="border-t border-slate-300 p-5 bg-white">
           <div className="flex justify-between mb-4">
             <span className="text-sm text-gray-500">Total</span>
             <span className="font-semibold text-lg">${total.toFixed(2)}</span>

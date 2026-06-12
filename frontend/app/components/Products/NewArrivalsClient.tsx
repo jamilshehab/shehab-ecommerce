@@ -14,6 +14,7 @@ import { Product } from "@/app/types";
 import { SwiperNext, SwiperPrev } from "../CustomArrows/CustomArrows";
 import { AnimatePresence } from "framer-motion";
 import ProductModal from "./Modal/ProductModal";
+import Link from "next/link";
 
 type Props = {
   products: Product[];
@@ -75,6 +76,14 @@ const NewArrivalsClient = ({ products }: Props) => {
             />
           )}
         </AnimatePresence>
+      </div>
+      <div className="flex justify-center mt-2">
+        <Link
+          href="/new"
+          className="mt-8 inline-flex rounded-full bg-black px-6 py-3 text-white transition hover:opacity-90"
+        >
+          View All
+        </Link>
       </div>
     </section>
   );

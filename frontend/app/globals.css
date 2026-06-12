@@ -165,3 +165,6 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+a {
+  font-size: 16px;
+}

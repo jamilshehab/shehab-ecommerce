@@ -13,6 +13,7 @@ import { SwiperNext, SwiperPrev } from "../CustomArrows/CustomArrows";
 import ProductCard from "../Products/ProductCard";
 import { AnimatePresence } from "framer-motion";
 import ProductModal from "../Products/Modal/ProductModal";
+import Link from "next/link";
 
 type Props = {
   products: Product[];
@@ -74,6 +75,14 @@ const FeaturedProductsClient = ({ products }: Props) => {
             />
           )}
         </AnimatePresence>
+      </div>
+      <div className="flex justify-center mt-4">
+        <Link
+          href="/featured"
+          className="mt-8 inline-flex rounded-full bg-black px-6 py-3 text-white transition hover:opacity-90"
+        >
+          View All
+        </Link>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCartStore } from "@/app/zustand/zustand";
+import Link from "next/link";
 
 export default function CartSection() {
   const {
@@ -83,7 +84,7 @@ export default function CartSection() {
                     onClick={() => removeFromCart(item.id)}
                     className="text-xs text-gray-400 hover:text-red-500 transition"
                   >
-                    Remove
+                    X
                   </button>
                 </div>
               ))}
@@ -101,11 +102,6 @@ export default function CartSection() {
                     <span>Subtotal</span>
                     <span>${total.toFixed(2)}</span>
                   </div>
-
-                  <div className="flex justify-between">
-                    <span>Shipping</span>
-                    <span className="text-green-600">Free</span>
-                  </div>
                 </div>
 
                 <div className="border-t my-5" />
@@ -116,9 +112,12 @@ export default function CartSection() {
                 </div>
 
                 {/* CTA */}
-                <button className="mt-6 w-full bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition">
+                <Link
+                  href="/checkout"
+                  className="relative mt-8 w-full block overflow-hidden rounded-2xl bg-black py-3 text-center text-white font-medium transition hover:opacity-90"
+                >
                   Checkout
-                </button>
+                </Link>
 
                 {/* SECONDARY ACTION */}
                 <button
