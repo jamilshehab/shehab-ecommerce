@@ -24,7 +24,7 @@ const ProductListingSection = ({
   } = useProductFilters(productList);
   return (
     <div>
-      <section className="sticky top-0 z-10 bg-stone-50/80 backdrop-blur">
+      <section className="sticky top-0 z-10    ">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 md:flex-row md:items-center justify-end">
           <div className="flex items-center  gap-4">
             <select
