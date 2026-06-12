@@ -54,7 +54,7 @@ export default function Footer() {
         {/* SOCIAL MEDIA (3rd COLUMN) */}
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-wide text-neutral-800">
-            Follow Us
+            Social
           </h4>
 
           <p className="mt-4 text-sm text-neutral-600">
