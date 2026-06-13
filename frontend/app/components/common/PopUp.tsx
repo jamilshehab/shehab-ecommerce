@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
 
 export default function WhatsAppSubscribePopup() {
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setOpen(true), 1200);
@@ -14,25 +13,6 @@ export default function WhatsAppSubscribePopup() {
   }, []);
 
   const closeModal = () => setOpen(false);
-
-  const handleJoin = async () => {
-    try {
-      setLoading(true);
-
-      window.open(
-        "https://whatsapp.com/channel/0029VbCg6jr3GJP3EKKYe02R",
-        "_blank",
-        "noopener,noreferrer",
-      );
-
-      setOpen(false);
-    } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (!open) return null;
 
@@ -82,13 +62,14 @@ export default function WhatsAppSubscribePopup() {
 
           {/* Button */}
           <div className="mt-6">
-            <button
-              onClick={handleJoin}
-              disabled={loading}
+            <Link
+              href="https://whatsapp.com/channel/0029VbCg6jr3GJP3EKKYe02R"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full cursor-pointer bg-black hover:opacity-90 text-white py-4 rounded-xl transition disabled:opacity-50"
             >
-              {loading ? "Redirecting..." : "Join WhatsApp Channel"}
-            </button>
+              Join WhatsApp Channel
+            </Link>
           </div>
 
           {/* Footer */}
