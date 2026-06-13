@@ -66,7 +66,7 @@ export default function WhatsAppSubscribePopup() {
               href="https://whatsapp.com/channel/0029VbCg6jr3GJP3EKKYe02R"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full  cursor-pointer bg-black px-5 hover:opacity-90 text-white py-4 rounded-xl transition disabled:opacity-50"
+              className="w-full  cursor-pointer bg-black px-5 hover:opacity-90 text-white py-4 rounded-2xl transition disabled:opacity-50"
             >
               Join WhatsApp Channel
             </Link>
