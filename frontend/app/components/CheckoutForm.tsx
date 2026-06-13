@@ -17,11 +17,18 @@ export default function CheckoutForm() {
 
     if (!fullName || !phone || !address) return;
 
-    await placeOrder({
-      fullName,
-      phone,
-      address,
-    });
+    await placeOrder(
+      {
+        fullName,
+        phone,
+        address,
+      },
+      () => {
+        setFullName("");
+        setPhone(undefined);
+        setAddress("");
+      },
+    );
   };
 
   return (
