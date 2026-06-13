@@ -19,8 +19,6 @@ export default function WhatsAppSubscribePopup() {
     try {
       setLoading(true);
 
-      toast.success("Redirecting to WhatsApp 🎉");
-
       window.open(
         "https://whatsapp.com/channel/0029VbCg6jr3GJP3EKKYe02R",
         "_blank",
