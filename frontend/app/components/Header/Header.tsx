@@ -102,7 +102,7 @@ const Header = () => {
 
       {/* MOBILE MENU */}
       <div
-        className={`fixed left-1/2 top-[88px] z-40 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 rounded-3xl border border-black/5 bg-white/90 backdrop-blur-2xl transition-all duration-300 md:hidden ${
+        className={`fixed left-1/2 top-[88px] z-99 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 rounded-3xl border border-black/5 bg-white/90 backdrop-blur-2xl transition-all duration-300 md:hidden ${
           menuOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-4 opacity-0"
