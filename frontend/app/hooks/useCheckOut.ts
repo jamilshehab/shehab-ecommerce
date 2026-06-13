@@ -78,14 +78,12 @@ ${cart
 
       const whatsappNumber = "96181066539"; // no +
 
-      window.open(
-        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
-        "_blank",
-      );
+      window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
       // 3️⃣ Clear cart
       clearCart();
       resetForm?.(); // reset inputs
+      toast.success("Order placed successfully 🎉");
     } catch (err: any) {
       setError(err.message);
     } finally {
