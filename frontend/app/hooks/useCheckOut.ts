@@ -86,7 +86,6 @@ ${cart
       // 3️⃣ Clear cart
       clearCart();
       resetForm?.(); // reset inputs
-      toast.success("Order placed successfully 🎉");
     } catch (err: any) {
       setError(err.message);
     } finally {
